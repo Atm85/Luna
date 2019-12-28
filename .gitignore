@@ -1,0 +1,9 @@
+Bot/config.json
+Bot/__pycache__/*
+Bot/commands/setup/__pycache__/*
+Bot/commands/__pycache__/*
+Bot/events/__pycache__/*
+Bot/utils/__pycache__/*
+Bot/images/*
+.idea/*
+venv/*

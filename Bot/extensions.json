@@ -1,0 +1,13 @@
+{
+  "extensions": [
+    "commands.setup.Channel",
+    "commands.setup.Message",
+    "commands.setup.Image",
+    "commands.Test",
+    "commands.Help",
+    "commands.Ping",
+    "events.MemberJoin",
+    "events.CommandError",
+    "events.CommandSuccess"
+  ]
+}
