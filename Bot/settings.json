@@ -8,5 +8,15 @@
         "size": 400,
         "xPos": 710,
         "yPos": 340
+    },
+    "519278601099804703": {
+        "setup_mode": 0,
+        "enabled": true,
+        "channel": "645109571865542656",
+        "message": "Welcome MENTION to **SERVER**",
+        "image": true,
+        "size": 400,
+        "xPos": 710,
+        "yPos": 340
     }
 }

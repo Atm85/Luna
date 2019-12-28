@@ -37,6 +37,9 @@ class ImageProcessor:
 # formula for vertical positioning
 # -
 #
+# formula for horizontal positioning
+# -
+#
 # formula for avatar size
 # -
 #
