@@ -21,8 +21,16 @@ try:
 except FileNotFoundError:
     getlogger().error("Default config not found! creating blank config.")
     with open("config.json", "w+") as f:
-        config = {"token": "", "prefix": ""}
-        json.dump(config, f, indent=4)
+        configData = {"token": "", "prefix": ""}
+        json.dump(configData, f, indent=4)
+
+# register server message settings
+try:
+    settings = File.read("settings.json")
+except FileNotFoundError:
+    with open("settings.json", "w+") as newFile:
+        settingsData = {}
+        json.dump(settingsData, newFile, indent=4)
 
 
 # returns bot auth token
