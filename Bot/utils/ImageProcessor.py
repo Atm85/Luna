@@ -19,15 +19,18 @@ class ImageProcessor:
 
                 with Image.open(BytesIO(result)) as avatar:
                     buffer = BytesIO()
-                    avatar = avatar.resize((500, 500))
+                    background = Image.open("images/" + key + ".png")
+                    av_size = round((background.height * 50) / 100)
+                    x = round((background.width - av_size) / 2)
+                    y = round((background.height - av_size) / 2)
+                    avatar = avatar.resize((av_size, av_size))
                     size = (avatar.size[0] * 3, avatar.size[1] * 3)
                     mask = Image.new("L", size, 0)
                     draw = ImageDraw.Draw(mask)
                     draw.ellipse((0, 0) + size, fill=255)
                     mask = mask.resize(avatar.size, Image.ANTIALIAS)
                     avatar.putalpha(mask)
-                    background = Image.open("images/" + key + ".png")
-                    background.paste(avatar, (710, 290), avatar)
+                    background.paste(avatar, (x, y), avatar)
                     background.save(buffer, "png")
                     buffer.seek(0)
 
@@ -35,12 +38,13 @@ class ImageProcessor:
                 await channel.send(content=message, file=file)
 
 # formula for vertical positioning
-# -
+# - (height - avatar-size) / 2
 #
 # formula for horizontal positioning
-# -
+# - (width - avatar-size) / 2
 #
 # formula for avatar size
-# -
+# -----------------------------------
+# - (height * 50) / 100
 #
 
