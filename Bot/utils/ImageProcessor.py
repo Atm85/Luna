@@ -1,6 +1,6 @@
 import discord
 import aiohttp
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 
 
@@ -30,6 +30,10 @@ class ImageProcessor:
                     draw.ellipse((0, 0) + size, fill=255)
                     mask = mask.resize(avatar.size, Image.ANTIALIAS)
                     avatar.putalpha(mask)
+                    textsize = round((background.height * 10) / 100)
+                    font = ImageFont.truetype("Greentrik-fonice.ttf", textsize)
+                    membercount = ImageDraw.Draw(background)
+                    membercount.text((5, (background.height - textsize)), "#"+str(len(channel.guild.members)), (255, 255, 255), font=font)
                     background.paste(avatar, (x, y), avatar)
                     background.save(buffer, "png")
                     buffer.seek(0)
