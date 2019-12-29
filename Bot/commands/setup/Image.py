@@ -14,7 +14,7 @@ class Image(commands.Cog):
         if not ctx.message.author.guild_permissions.administrator:
             await ctx.message.channel.send("You do not have permission to use this command!")
         else:
-            await ctx.message.channel.send("Upload banner image to use, currently only supports 1920x1080")
+            await ctx.message.channel.send("Upload banner image to use, supports images of ANY dimensions")
             key = str(ctx.message.guild.id)
             settings = FileManager.read("settings.json")
             settings[key]["setup_mode"] = 1
