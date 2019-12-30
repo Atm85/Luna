@@ -1,6 +1,7 @@
 from discord.ext import commands
 from utils.FileManager import FileManager
 from utils.ImageProcessor import ImageProcessor
+from utils.Logger import Logger
 
 
 class MemberJoin(commands.Cog):
@@ -16,17 +17,20 @@ class MemberJoin(commands.Cog):
 
         key = str(member.guild.id)
         settings = FileManager.read("settings.json")
-        channel = member.guild.get_channel(int(settings[key]["channel"]))
-        message = settings[key]["message"]
-        format_msg = message. \
-            replace("MEMBER", member.name). \
-            replace("SERVER", member.guild.name). \
-            replace("MENTION", member.mention). \
-            replace("COUNT", str(len(channel.guild.members)))
-        if settings[key]["image"] is not None:
-            await ImageProcessor.upload(avatar, key, channel, format_msg)
+        if key in settings:
+            channel = member.guild.get_channel(int(settings[key]["channel"]))
+            message = settings[key]["message"]
+            format_msg = message. \
+                replace("MEMBER", member.name). \
+                replace("SERVER", member.guild.name). \
+                replace("MENTION", member.mention). \
+                replace("COUNT", str(len(channel.guild.members)))
+            if settings[key]["image"] is not None:
+                await ImageProcessor.upload(avatar, key, channel, format_msg)
+            else:
+                await channel.send(format_msg)
         else:
-            await channel.send(format_msg)
+            Logger.error("Server " + member.guild.name + " does not contain settings...")
 
 
 def setup(bot):
