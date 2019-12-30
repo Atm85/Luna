@@ -24,7 +24,7 @@ class Position(commands.Cog):
             await ctx.message.channel.send("You do not have permission to use this command!")
         else:
             embed = discord.Embed(
-                color=0x2ecc71,
+                color=12632256,
                 title="Change avatar position"
             )
             embed.add_field(name="L", value="left")

@@ -22,7 +22,7 @@ class Message(commands.Cog):
             await ctx.message.channel.send("You do not have permission to use this command!")
         else:
             embed = discord.Embed(
-                color=0x2ecc71,
+                color=12632256,
                 title="message keywords"
             )
             embed.add_field(name="MEMBER", value="members username")
