@@ -24,7 +24,8 @@ class Test(commands.Cog):
             format_msg = message.\
                 replace("MEMBER", ctx.message.author.name).\
                 replace("SERVER", ctx.message.guild.name).\
-                replace("MENTION", ctx.message.author.mention)
+                replace("MENTION", ctx.message.author.mention).\
+                replace("COUNT", str(len(channel.guild.members)))
 
             await ctx.message.channel.send("A test message was sent to the channel that was set!")
             if settings[key]["image"] is not None:

@@ -21,7 +21,8 @@ class MemberJoin(commands.Cog):
         format_msg = message. \
             replace("MEMBER", member.name). \
             replace("SERVER", member.guild.name). \
-            replace("MENTION", member.mention)
+            replace("MENTION", member.mention). \
+            replace("COUNT", str(len(channel.guild.members)))
         if settings[key]["image"] is not None:
             await ImageProcessor.upload(avatar, key, channel, format_msg)
         else:

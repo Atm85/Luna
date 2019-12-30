@@ -33,7 +33,11 @@ class Message(commands.Cog):
             try:
                 await self.bot.wait_for("message", check=get_response, timeout=30.0)
                 message = settings[key]["message"]
-                format_msg = message.replace("MEMBER", ctx.message.author.name).replace("SERVER", ctx.message.guild.name).replace("MENTION", ctx.message.author.mention)
+                format_msg = message.\
+                    replace("MEMBER", ctx.message.author.name).\
+                    replace("SERVER", ctx.message.guild.name).\
+                    replace("MENTION", ctx.message.author.mention). \
+                    replace("COUNT", str(len(ctx.message.channel.guild.members)))
                 embed = discord.Embed(title=format_msg)
                 await ctx.message.channel.send("message has been set as...", embed=embed)
                 FileManager.save(settings, "settings.json")
