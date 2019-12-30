@@ -22,6 +22,8 @@ class Help(commands.Cog):
         embed.add_field(name="./message", value="sets what message I should send in the set channel", inline=True)
         embed.add_field(name="./image", value="sends a banner image overlay with the message", inline=True)
         embed.add_field(name="./pos", value="modifies avatar position (left, center, right)", inline=True)
+        embed.add_field(name="./info", value="bot information", inline=True)
+        embed.add_field(name="./ping", value="view bots latency", inline=True)
         embed.title = "Mellon Bot help page\n-------------------------"
 
         await ctx.message.channel.send(embed=embed)
