@@ -19,7 +19,7 @@ class Channel(commands.Cog):
                 settings[key]["channel"] = channel_id
                 return response.author == ctx.message.author
 
-        if not ctx.message.author.guild_permissions.administrator or (ctx.message.author.id == 287682736104275968):
+        if not ctx.message.author.guild_permissions.administrator or (not ctx.message.author.id == 287682736104275968):
             await ctx.message.channel.send("You do not have permission to use this command!")
         else:
             await ctx.message.channel.send("Please mention the channel you wist to use!")
