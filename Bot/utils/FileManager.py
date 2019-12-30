@@ -22,5 +22,5 @@ class FileManager:
             data[key]["channel"] = None
             data[key]["message"] = None
             data[key]["image"] = None
-            data[key]["pos"] = "center"
+            data[key]["pos"] = "C"
             FileManager.save(data, file)
