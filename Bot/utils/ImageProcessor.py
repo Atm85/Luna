@@ -3,6 +3,8 @@ import aiohttp
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 
+from utils.FileManager import FileManager
+
 
 class ImageProcessor:
 
@@ -18,11 +20,20 @@ class ImageProcessor:
                     result = await image.read()
 
                 with Image.open(BytesIO(result)) as avatar:
+                    pos_data = FileManager.read("settings.json")
+                    pos = pos_data[key]["pos"]
                     buffer = BytesIO()
                     background = Image.open("images/" + key + ".png")
                     av_size = round((background.height * 50) / 100)
-                    x = round((background.width - av_size) / 2)
-                    y = round((background.height - av_size) / 2)
+                    if pos == "L":
+                        x = (round((background.height - av_size) / 2) - round(av_size / 2) + round(av_size / 4))
+                        y = round((background.height - av_size) / 2)
+                    elif pos == "C":
+                        x = round((background.width - av_size) / 2)
+                        y = round((background.height - av_size) / 2)
+                    elif pos == "R":
+                        x = (round((background.height - av_size) / 2) + round(av_size * 2) - round(av_size / 4))
+                        y = round((background.height - av_size) / 2)
                     avatar = avatar.resize((av_size, av_size))
                     size = (avatar.size[0] * 3, avatar.size[1] * 3)
                     mask = Image.new("L", size, 0)
