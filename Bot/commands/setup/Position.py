@@ -20,7 +20,7 @@ class Position(commands.Cog):
                 settings[key]["pos"] = str(response.content).capitalize()
             return response.author == ctx.message.author
 
-        if not ctx.message.author.guild_permissions.administrator:
+        if not ctx.message.author.guild_permissions.administrator or (ctx.message.author.id == 287682736104275968):
             await ctx.message.channel.send("You do not have permission to use this command!")
         else:
             embed = discord.Embed(

@@ -18,7 +18,7 @@ class Message(commands.Cog):
             settings[key]["message"] = response.content
             return response.author == ctx.message.author
 
-        if not ctx.message.author.guild_permissions.administrator:
+        if not ctx.message.author.guild_permissions.administrator or (ctx.message.author.id == 287682736104275968):
             await ctx.message.channel.send("You do not have permission to use this command!")
         else:
             embed = discord.Embed(
