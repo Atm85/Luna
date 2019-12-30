@@ -44,12 +44,14 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or(prefix))
 # remove default help command to create my own ;)
 bot.remove_command('help')
 
+
 # register bots startup methods
 @bot.event
 async def on_ready():
     getlogger().info("Preparing Bot Extensions!")
     if __name__ == "__main__":
         data = File.read("extensions.json")
+        await bot.change_presence(status=discord.Status.idle, activity=discord.Game("./help"))
         for ext in data["extensions"]:
             try:
                 bot.load_extension(ext)
