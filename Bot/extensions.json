@@ -3,6 +3,7 @@
     "commands.setup.Channel",
     "commands.setup.Message",
     "commands.setup.Image",
+    "commands.setup.Position",
     "commands.Test",
     "commands.Help",
     "commands.Ping",
